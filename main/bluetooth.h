@@ -25,6 +25,7 @@ class BluetoothHandler
     void start();
     void send(std::string message);
     bool isDeviceConnected();
+    uint32_t getConnectedCount();
     
     BluetoothServerCallbacks* bsc;
     BLECharacteristic *pCharacteristicRx;

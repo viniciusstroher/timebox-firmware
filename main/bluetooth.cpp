@@ -62,3 +62,9 @@ void BluetoothHandler::send(std::string message){
 bool BluetoothHandler::isDeviceConnected(){
   return bsc->isDeviceConnected();
 }
+
+uint32_t BluetoothHandler::getConnectedCount(){
+  uint32_t count = pServer->getConnectedCount();
+  Serial.print("\n[info] connected clients "+String(count)+" \n");
+  return count;
+}
