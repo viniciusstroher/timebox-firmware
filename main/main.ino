@@ -1,22 +1,29 @@
 #include "Arduino.h"
 #include "bluetooth.h"
+#include "giroscope.h"
 
-BluetoothHandler* bh;
+BluetoothHandler* bluetoothHandler;
+Giroscope* giroscope;
+GiroscopeData giroscopeData;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  
-  bh = new BluetoothHandler();
-  bh->setup();
-  bh->start();
+
+  giroscope->setup();
+
+  bluetoothHandler = new BluetoothHandler();
+  bluetoothHandler->setup();
+  bluetoothHandler->start();
 }
 
 void loop() {
-  if(bh->bsc->isDeviceConnected()){
+  if(bluetoothHandler->isDeviceConnected()){
     //envia dados ao dispositivo conectado
-    bh->pCharacteristicTx->setValue("#123#teste");
-    bh->pCharacteristicTx->notify();
+    
+    giroscopeData = giroscope->read();
+    
+    bluetoothHandler->send("testando");
   }
   
   delay(5000);
