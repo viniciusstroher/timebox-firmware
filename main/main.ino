@@ -16,9 +16,8 @@ void setup() {
 
   bluetoothHandler = new BluetoothHandler();
   bluetoothHandler->setup();
-  bluetoothHandler->start();
-
-  
+  bluetoothHandler->startServer();
+  bluetoothHandler->startAdversiting();
 }
 
 void loop() {
@@ -29,6 +28,8 @@ void loop() {
     giroscopeData = giroscope->read();
     
     bluetoothHandler->send("testando");
+  }else{
+    bluetoothHandler->startAdversiting();
   }
   
   delay(5000);

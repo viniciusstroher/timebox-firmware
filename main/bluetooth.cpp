@@ -41,11 +41,13 @@ void BluetoothHandler::setup() {
   Serial.print("\n[info] create ble rx \n");
 }
 
-void BluetoothHandler::start(){
+void BluetoothHandler::startServer(){
   Serial.print("\n[info] start ble service \n");
   
   pService->start();
+}
 
+void BluetoothHandler::startAdversiting(){
   // Inicia a descoberta do ESP32
   pServer->getAdvertising()->start();
 
