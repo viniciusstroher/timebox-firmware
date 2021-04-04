@@ -28,21 +28,23 @@ GiroscopeData Giroscope::read()
    GyY=Wire.read()<<8|Wire.read();  // 0x45 (GYRO_YOUT_H) & 0x46 (GYRO_YOUT_L)
    GyZ=Wire.read()<<8|Wire.read();  // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
    
-   Serial.print("Accelerometer Values: \n");
-   Serial.print("AcX: "); Serial.print(AcX); Serial.print("\nAcY: "); Serial.print(AcY); Serial.print("\nAcZ: "); Serial.print(AcZ);   
-   
-   //Serial.print("\nTemperature: " );  Serial.print(Tmp);
-   Serial.print("\nGyroscope Values: \n");
-   Serial.print("GyX: "); Serial.print(GyX); Serial.print("\nGyY: "); Serial.print(GyY); Serial.print("\nGyZ: "); Serial.print(GyZ);
-   Serial.print("\n");
+ 
+   Serial.print("\n[info] accelerometer vals \n");
+   Serial.print("\n[info] AcX: "+String(AcX)+" \n");
+   Serial.print("\n[info] AcY: "+String(AcY)+" \n");
+   Serial.print("\n[info] AcZ: "+String(AcZ)+" \n");
+   Serial.print("\n[info] giroscope vals \n");
+   Serial.print("\n[info] GyX: "+String(GyX)+" \n");
+   Serial.print("\n[info] GyY: "+String(GyY)+" \n");
+   Serial.print("\n[info] GyZ: "+String(GyZ)+" \n");
+     
+   returnGiro.AcX = AcX;
+   returnGiro.AcY = AcY;
+   returnGiro.AcZ = AcZ;
+   returnGiro.Tmp = Tmp;
+   returnGiro.GyX = GyX;
+   returnGiro.GyY = GyY;
+   returnGiro.GyZ = GyZ;
 
-    returnGiro.AcX = AcX;
-    returnGiro.AcY = AcY;
-    returnGiro.AcZ = AcZ;
-    returnGiro.Tmp = Tmp;
-    returnGiro.GyX = GyX;
-    returnGiro.GyY = GyY;
-    returnGiro.GyZ = GyZ;
-
-    return returnGiro;
+   return returnGiro;
 }
