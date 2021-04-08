@@ -21,7 +21,7 @@ void setup() {
   bluetoothHandler->startServer();
   bluetoothHandler->startAdversiting();
 
-  clock1 = new Clock(1617845194); //unix
+  clock1 = new Clock(1617848887); //unix
 }
 
 void loop() {
