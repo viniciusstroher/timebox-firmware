@@ -20,6 +20,7 @@ class Giroscope{
   public:
     void setup();
     GiroscopeData read();
+    String getSide();
   private:
     int sda_pin;
     int scl_pin; 
