@@ -9,11 +9,20 @@ BluetoothHandler* bluetoothHandler;
 Giroscope* giroscope;
 GiroscopeData giroscopeData;
 Clock* clock1;
+String timeNow;
+
+void waitForSerialOpen(){
+  while (!Serial){
+    delay(10); //Espera serial
+  }
+}
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(BOARD_SPEED);
+  waitForSerialOpen();
 
+  giroscope = new Giroscope();
   giroscope->setup();
 
   bluetoothHandler = new BluetoothHandler();
@@ -26,13 +35,20 @@ void setup() {
 
 void loop() {
   
-  clock1->getTime();
+//  timeNow = clock1->getTime();
+  giroscopeData = giroscope->read();
+  giroscope->print();
+  giroscope->getState();
+  
+  Serial.print("\n [info] current time "+timeNow+" \n");
   
   bluetoothHandler->getConnectedCount();
   if(bluetoothHandler->isDeviceConnected()){
     //envia dados ao dispositivo conectado
     
-    giroscopeData = giroscope->read();
+//    giroscopeData = giroscope->read();
+//    giroscope->readRaw(MPU6050SlaveAddress, MPU6050_REGISTER_ACCEL_XOUT_H);
+//    giroscope->getState();
     
     bluetoothHandler->send("testando");
   }else{

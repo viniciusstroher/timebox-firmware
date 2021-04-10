@@ -14,14 +14,4 @@ void BluetoothCallbacks::onWrite(BLECharacteristic *pCharacteristic) {
     Serial.println();
     Serial.println("*********");
   }
-
-  // Processa o caracter recebido do aplicativo. Se for A acende o LED. B apaga o LED
-  if (rxValue.find("A") != -1) {
-    Serial.println("Turning ON!");
-    //    digitalWrite(LED, HIGH);
-  }
-  else if (rxValue.find("B") != -1) {
-    Serial.println("Turning OFF!");
-    //    digitalWrite(LED, LOW);
-  }
 }
