@@ -8,7 +8,7 @@
 BluetoothHandler* bluetoothHandler;
 Giroscope* giroscope;
 GiroscopeData giroscopeData;
-Clock* clock1;
+Clock* clocker;
 String timeNow;
 
 void waitForSerialOpen(){
@@ -35,7 +35,7 @@ void setup() {
 
 void loop() {
   
-//  timeNow = clock1->getTime();
+//  timeNow = clocker->getTime();
   giroscopeData = giroscope->read();
   giroscope->print();
   giroscope->getState();
