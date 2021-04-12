@@ -24,7 +24,7 @@ class BluetoothHandler
     void setup();
     void startServer();
     void startAdversiting();
-    void send(std::string message);
+    void send(String message);
     bool isDeviceConnected();
     uint32_t getConnectedCount();
     

@@ -54,11 +54,11 @@ void BluetoothHandler::startAdversiting(){
   Serial.print("\n[info] start ble discovery service \n");
 }
 
-void BluetoothHandler::send(std::string message){
-   pCharacteristicTx->setValue(message);
+void BluetoothHandler::send(String message){
+   pCharacteristicTx->setValue(message.c_str());
    pCharacteristicTx->notify();
 
-   Serial.print("\n[info] sending data \n");
+   Serial.print("\n[info] sending data "+message+"\n");
 }
 
 bool BluetoothHandler::isDeviceConnected(){

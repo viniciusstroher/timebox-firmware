@@ -7,7 +7,6 @@
 
 BluetoothHandler* bluetoothHandler;
 Giroscope* giroscope;
-GiroscopeData giroscopeData;
 Clock* clocker;
 String timeNow;
 
@@ -30,28 +29,24 @@ void setup() {
   bluetoothHandler->startServer();
   bluetoothHandler->startAdversiting();
 
-  clock1 = new Clock(1617848887); //unix
+  clocker = new Clock(1617848887); //unix
 }
 
 void loop() {
   
 //  timeNow = clocker->getTime();
-  giroscopeData = giroscope->read();
-  giroscope->print();
-  giroscope->getState();
-  
+  giroscope->read();
+//  giroscope->print();
+
   Serial.print("\n [info] current time "+timeNow+" \n");
   
   bluetoothHandler->getConnectedCount();
   if(bluetoothHandler->isDeviceConnected()){
-    //envia dados ao dispositivo conectado
-    
-//    giroscopeData = giroscope->read();
-//    giroscope->readRaw(MPU6050SlaveAddress, MPU6050_REGISTER_ACCEL_XOUT_H);
-//    giroscope->getState();
-    
-    bluetoothHandler->send("testando");
+    //envia dados ao dispositivo conectado    
+    String gyroscopeData = String(giroscope->readAsJson());
+    bluetoothHandler->send(gyroscopeData);
   }else{
+    //rodar este comando de 1 em 1 min
     bluetoothHandler->startAdversiting();
   }
   
