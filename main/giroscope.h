@@ -16,4 +16,9 @@ class Giroscope {
   private:
     Adafruit_MPU6050 mpu;
     sensors_event_t a, g, temp;
+    float gyroX, gyroY, gyroZ;
+    float accX, accY, accZ;
+    float temperature;
+    float gyroXerror, gyroYerror, gyroZerror;
+
 };

@@ -50,5 +50,6 @@ void loop() {
     bluetoothHandler->startAdversiting();
   }
   
-  delay(5000);
+//  delay(5000);
+  delay(200);
 }
